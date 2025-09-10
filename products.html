@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Produits - Groupement Agricole Karnodji</title>
+    <style>
+        /* Styles communs */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        
+        header { background-color: #2e7d32; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: white; font-size: 1.8rem; font-weight: bold; text-decoration: none; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: #c8e6c9; }
+        
+        .section { padding: 5rem 0; }
+        .section-title { text-align: center; margin-bottom: 3rem; color: #2e7d32; font-size: 2.5rem; }
+        
+        footer { background-color: #1b5e20; color: white; padding: 3rem 0; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-section h3 { margin-bottom: 1.5rem; color: #c8e6c9; }
+        .copyright { text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #388e3c; }
+
+        /* Styles spécifiques aux produits */
+        .products-hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/images11.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #2e7d32;
+            background: white;
+            color: #2e7d32;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            color: #ff6b35;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .product-title {
+            color: #2e7d32;
+            margin: 0.5rem 0;
+            font-size: 1.3rem;
+        }
+
+        .product-season {
+            color: #666;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-price {
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .order-btn {
+            display: inline-block;
+            background-color: #ff6b35;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .order-btn:hover {
+            background-color: #e85a2a;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .filters {
+                gap: 0.5rem;
+            }
+            
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">🌱 Karnodji Deli</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="products.html">Produits</a></li>
+                <li><a href="findus.html">Nous Trouver</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="products-hero">
+        <div class="container">
+            <h1>Nos Produits</h1>
+            <p>Découvrez la richesse de nos terres à Deli</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="cereales">Céréales</button>
+                <button class="filter-btn" data-filter="legumes">Légumes</button>
+                <button class="filter-btn" data-filter="autres">Autres Produits</button>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card" data-category="cereales">
+                    <img src="img/cereale.jpeg" alt="Céréales locales" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Céréales</span>
+                        <h3 class="product-title">Mil Local</h3>
+                        <p class="product-season">🌾 Juin à Novembre</p>
+                        <p>Mil cultivé selon les traditions agricoles tchadiennes, riche en nutriments.</p>
+                        <p class="product-price">750 FCFA / kg</p>
+                        <button class="order-btn">Commander</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="cereales">
+                    <img src="img/cereale.jpeg" alt="Sorgho" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Céréales</span>
+                        <h3 class="product-title">Sorgho</h3>
+                        <p class="product-season">🌾 Juin à Novembre</p>
+                        <p>Sorgho de qualité supérieure, résistant à la sécheresse et très nutritif.</p>
+                        <p class="product-price">800 FCFA / kg</p>
+                        <button class="order-btn">Commander</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="cereales">
+                    <img src="img/mais.jpeg" alt="Maïs" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Céréales</span>
+                        <h3 class="product-title">Maïs</h3>
+                        <p class="product-season">🌾 Juillet à Octobre</p>
+                        <p>Maïs jaune sucré, parfait pour la consommation directe ou la transformation.</p>
+                        <p class="product-price">700 FCFA / kg</p>
+                        <button class="order-btn">Commander</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="legumes">
+                    <img src="https://images.unsplash.com/photo-1573246123716-6b1782bfc499?ixlib=rb-4.0.3" alt="Arachides" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Légumes</span>
+                        <h3 class="product-title">Arachides</h3>
+                        <p class="product-season">🥜 Octobre à Décembre</p>
+                        <p>Arachides de qualité supérieure, source importante de protéines et d'énergie.</p>
+                        <p class="product-price">1200 FCFA / kg</p>
+                        <button class="order-btn">Commander</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="legumes">
+                    <img src="img/s.jpeg" alt="Légumes variés" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Légumes</span>
+                        <h3 class="product-title">Légumes Variés</h3>
+                        <p class="product-season">🥬 Selon saison</p>
+                        <p>Oignons, gombos, aubergines et autres légumes adaptés au climat tchadien.</p>
+                        <p class="product-price">Prix variables</p>
+                        <button class="order-btn">Commander</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="autres">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3" alt="Produits transformés" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Autres Produits</span>
+                        <h3 class="product-title">Farine de Mil</h3>
+                        <p class="product-season">🫙 Toute l'année</p>
+                        <p>Farine de mil moulue traditionnellement, idéale pour le boule et autres préparations.</p>
+                        <p class="product-price">1000 FCFA / kg</p>
+                        <button class="order-btn">Commander</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="autres">
+                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3" alt="Huile d'arachide" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Autres Produits</span>
+                        <h3 class="product-title">Huile d'Arachide</h3>
+                        <p class="product-season">🫙 Toute l'année</p>
+                        <p>Huile d'arachide pressée à froid, naturelle et riche en saveurs.</p>
+                        <p class="product-price">2500 FCFA / litre</p>
+                        <button class="order-btn">Commander</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="autres">
+                    <img src="https://images.unsplash.com/photo-1471194402529-8e0f5a675de6?ixlib=rb-4.0.3" alt="Œufs" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Autres Produits</span>
+                        <h3 class="product-title">Œufs Fermiers</h3>
+                        <p class="product-season">🥚 Toute l'année</p>
+                        <p>Œufs de poules élevées en liberté, riches en nutriments et en saveur.</p>
+                        <p class="product-price">150 FCFA / œuf</p>
+                        <button class="order-btn">Commander</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Groupement Agricole Karnodji</h3>
+                    <p>Président: DONANG Augustin "Gus le Juste"</p>
+                    <p>📍 Deli, près de Moundou, Tchad</p>
+                    <p>☎️ +235 (000) 62123640 / 85031890</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horaires</h3>
+                    <p>Lundi-Vendredi: 7h-17h</p>
+                    <p>Samedi: 7h-12h</p>
+                    <p>Dimanche: Fermé</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Points de vente</h3>
+                    <p>Marché de Moundou: Mercredi & Samedi</p>
+                    <p>Marché de Bébedjia: Jeudi</p>
+                    <p>Marché de Kélo: Mardi</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Groupement Agricole Karnodji de Deli. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filtrage des produits
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Retirer la classe active de tous les boutons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Ajouter la classe active au bouton cliqué
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    productCards.forEach(card => {
+                        if (filter === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            if (card.getAttribute('data-category') === filter) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Fonctionnalité de commande
+            const orderButtons = document.querySelectorAll('.order-btn');
+            orderButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productName = this.parentElement.querySelector('.product-title').textContent;
+                    alert(`Merci pour votre intérêt pour ${productName}! Veuillez nous contacter au +235 (000) 62123640 pour passer commande.`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
